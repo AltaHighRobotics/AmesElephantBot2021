@@ -7,6 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import frc.robot.subsystems.*;
+import frc.robot.commands.*;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -14,13 +17,33 @@ import edu.wpi.first.wpilibj2.command.Command;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer {
-  // The robot's subsystems and commands are defined here...
+public class RobotContainer 
+{
+  private final XboxController driveController = new XboxController(Constants.DRIVER_CONTROLLER);
+  
+  //Subsytems
+  private final ShooterSub m_shooterSub = new ShooterSub();
+  private final IntakeSub m_intakeSub = new IntakeSub();
 
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
-  public RobotContainer() {
+  //Commands
+  private final FeedCommand m_feedCommand = new FeedCommand(m_shooterSub);
+  private final ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
+
+  private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
+
+
+
+
+
+
+  public RobotContainer() 
+  {
+    DriveTrainSub m_driveTrainSub = new DriveTrainSub();
+    DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
     // Configure the button bindings
     configureButtonBindings();
+    //CommandScheduler.getInstance().setDefaultCommand(m_driveTrain, m_driveCommand);
+
   }
 
   /**
@@ -29,14 +52,26 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() 
+  {
+    //driving controller
+    final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
+    final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
+    final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
+
+    shootButton.whenPressed(m_shootCommand);
+    intakeButton.whenPressed(m_intakeCommand);
+    feedButton.whenPressed(m_feedCommand);
+
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
+  public Command getAutonomousCommand() 
+  {
     // An ExampleCommand will run in autonomous
     return null;
   }

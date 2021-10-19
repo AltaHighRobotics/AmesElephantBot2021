@@ -12,7 +12,8 @@ package frc.robot;
  * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
-public final class Constants {
+public final class Constants 
+{
 
 	public static final int INTAKE_MOTOR = 0;
 	public static final double STOP_INTAKE = 0;
@@ -22,4 +23,24 @@ public final class Constants {
 	public static final double STOP_SHOOTER = 0;
 	public static final int FEED_MOTOR = 0;
 	public static final double STOP_FEED = 0;
-	public static final double START_FEED = 0;}
+	public static final double START_FEED = 0;
+    public static final int DRIVER_CONTROLLER = 0;
+
+    //Xbox buttons
+    public static final int RIGHT_STICK_Y = 5;
+    public static final int RIGHT_STICK_X = 4;
+    public static final int LEFT_STICK_Y = 2;
+    public static final int LEFT_STICK_X = 1;
+ 
+    public static final int XBOX_A_BUTTON = 1; // Makes Tubert motor go up
+    public static final int XBOX_B_BUTTON = 2;
+    public static final int XBOX_X_BUTTON = 3;
+    public static final int XBOX_Y_BUTTON = 4;
+ 
+    public static final int XBOX_LEFT_BUMPER = 5; // Toggles lemon shooter motor
+    public static final int XBOX_RIGHT_BUMPER = 6;
+ 
+    public static final int XBOX_LEFT_STICK_BUTTON = 9;
+    public static final int XBOX_RIGHT_STICK_BUTTON = 10;
+
+}
