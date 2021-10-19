@@ -10,6 +10,7 @@ import frc.robot.subsystems.DriveTrainSub;
 public class AutonomousCommand extends CommandBase 
 {
   private DriveTrainSub m_driveTrainSub;
+  private int c;
 
   public AutonomousCommand(DriveTrainSub driveTrainSub) 
   {
@@ -21,6 +22,7 @@ public class AutonomousCommand extends CommandBase
   @Override
   public void initialize() 
   {
+    c = 0;
 
   }
 
@@ -28,7 +30,12 @@ public class AutonomousCommand extends CommandBase
   @Override
   public void execute() 
   {
+   // m_driveTrainSub.motorGoForward();
+   if (c < 1500)
+   {
     m_driveTrainSub.motorGoForward();
+   }
+   c++;
   }
 
   // Called once the command ends or is interrupted.
