@@ -16,4 +16,10 @@ public final class Constants {
 
 	public static final int INTAKE_MOTOR = 0;
 	public static final double STOP_INTAKE = 0;
-	public static final double START_INTAKE = 0;}
+	public static final double START_INTAKE = 0;
+	public static final int SHOOTER_MOTOR = 0;
+	public static final double START_SHOOTER = 0;
+	public static final double STOP_SHOOTER = 0;
+	public static final int FEED_MOTOR = 0;
+	public static final double STOP_FEED = 0;
+	public static final double START_FEED = 0;}
