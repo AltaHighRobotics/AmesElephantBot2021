@@ -24,12 +24,16 @@ public class RobotContainer
   //Subsytems
   private final ShooterSub m_shooterSub = new ShooterSub();
   private final IntakeSub m_intakeSub = new IntakeSub();
+  DriveTrainSub m_driveTrainSub = new DriveTrainSub();
 
   //Commands
   private final FeedCommand m_feedCommand = new FeedCommand(m_shooterSub);
   private final ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
-
+  DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
+  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_driveTrainSub);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
+
+  private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
 
 
 
@@ -72,7 +76,8 @@ public class RobotContainer
    */
   public Command getAutonomousCommand() 
   {
+
     // An ExampleCommand will run in autonomous
-    return null;
+    return m_autonomousCommand;
   }
 }

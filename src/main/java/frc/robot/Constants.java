@@ -42,5 +42,14 @@ public final class Constants
  
     public static final int XBOX_LEFT_STICK_BUTTON = 9;
     public static final int XBOX_RIGHT_STICK_BUTTON = 10;
+	public static final int RIGHT_Y_AXIS = 0;
+	public static final int LEFT_Y_AXIS = 0;
+	public static final int LEFT_DRIVE_4 = 0;
+	public static final int LEFT_DRIVE_5 = 0;
+	public static final int RIGHT_DRIVE_0 = 0;
+	public static final int RIGHT_DRIVE_1 = 0;
+	public static final double DRIVE_SPEED = 0;
+	public static final double AUTONOMOUS_SPEED = 1;
+	public static final double AUTONOMOUS_STOP = 0;
 
 }
