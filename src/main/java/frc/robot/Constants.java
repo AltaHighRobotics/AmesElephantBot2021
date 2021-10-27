@@ -51,5 +51,8 @@ public final class Constants
         public static final double DRIVE_SPEED = 0;
         public static final double AUTONOMOUS_SPEED = 1;
         public static final double AUTONOMOUS_STOP = 0;
+		public static final int GRAB_MOTOR = 0;
+		public static final double CLAW_OPEN = 0;
+		public static final double CLAW_CLOSE = 0;
 
 }
