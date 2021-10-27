@@ -25,6 +25,7 @@ public class RobotContainer
   private final ShooterSub m_shooterSub = new ShooterSub();
   private final IntakeSub m_intakeSub = new IntakeSub();
   DriveTrainSub m_driveTrainSub = new DriveTrainSub();
+  private final BottleGrabberSub m_grabSub = new BottleGrabberSub();
 
   //Commands
   private final FeedCommand m_feedCommand = new FeedCommand(m_shooterSub);
@@ -32,6 +33,7 @@ public class RobotContainer
   DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
   private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_driveTrainSub);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
+  private final BottleGrabberCommand m_grabCommand = new BottleGrabberCommand(m_grabSub);
 
   private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
 
