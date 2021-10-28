@@ -30,12 +30,14 @@ public class DriveTrainSub extends SubsystemBase
    {
     rightDrive1.set(speed * Constants.DRIVE_SPEED);
     rightDrive2.set(speed * Constants.DRIVE_SPEED);
+    System.out.println(speed * Constants.DRIVE_SPEED);
    }
 
   public void setLeftMotors(double speed)              
   {
     leftDrive1.set(speed * Constants.DRIVE_SPEED);
     leftDrive2.set(speed * Constants.DRIVE_SPEED);
+    System.out.println(speed * Constants.DRIVE_SPEED);
   }
 
   public void motorGoForward()
