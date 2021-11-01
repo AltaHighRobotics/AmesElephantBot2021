@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -11,12 +12,12 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class ShooterSub extends SubsystemBase 
 {
   private Victor shooterMotor;
-  private Victor feedMotor;
+  private Talon feedMotor;
   /** Creates a new ShooterSub. */
   public ShooterSub()
    {
     shooterMotor = new Victor(Constants.SHOOTER_MOTOR);
-    feedMotor = new Victor(Constants.FEED_MOTOR);
+    feedMotor = new Talon(Constants.FEED_MOTOR);
    }
 
   @Override

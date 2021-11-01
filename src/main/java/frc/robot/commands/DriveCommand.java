@@ -1,6 +1,9 @@
-// Copyright (c) FIRST and other WPILib contributors.
-// Open Source Software; you can modify and/or share it under the terms of
-// the WPILib BSD license file in the root directory of this project.
+/*----------------------------------------------------------------------------*/
+/* Copyright (c) 2019 FIRST. All Rights Reserved.                             */
+/* Open Source Software - may be modified and shared by FRC teams. The code   */
+/* must be accompanied by the FIRST BSD license file in the root directory of */
+/* the project.                                                               */
+/*----------------------------------------------------------------------------*/
 
 package frc.robot.commands;
 
@@ -10,37 +13,49 @@ import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSub;
 
 public class DriveCommand extends CommandBase {
-  /** Creates a new DriveCommand. */
-  private DriveTrainSub m_driveTrainSub;
-  private XboxController m_driveController;
-  private double leftStickY;
+  //getters
+  private final DriveTrainSub m_driveTrain;
+  private final XboxController drivController;
   private double rightStickY;
-  
-  public DriveCommand(DriveTrainSub subsystem, XboxController driveController) {
-    // Use addRequirements() here to declare subsystem dependencies.
-    m_driveTrainSub = subsystem;
-    m_driveController = driveController;
-    addRequirements(m_driveTrainSub);
+  private double rightStickX;
+
+  public DriveCommand(DriveTrainSub driveSub, XboxController Xbox) {
+    //setters
+    m_driveTrain = driveSub;
+    drivController = Xbox;
+    //subsystem dependencies
+    addRequirements(m_driveTrain);
+
+  }
+
+
+  public double GetDriverRawAxisX(final int axis) {
+    return drivController.getRawAxis(axis);
+  }
+
+  public double GetDriverRawAxisY(final int axis) {
+    return drivController.getRawAxis(axis);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    rightStickY = m_driveController.getRawAxis(Constants.RIGHT_STICK_Y);
-    leftStickY = m_driveController.getRawAxis(Constants.RIGHT_STICK_X);
-    m_driveTrainSub.setRightMotors(-rightStickY);
-    m_driveTrainSub.setLeftMotors(-leftStickY);
-
-
+    if (Constants.TELEOP_DRIVE == true);{
+      rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.RIGHT_STICK_Y);
+      rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X);
+      m_driveTrain.arcadeDrive(rightStickY, rightStickX);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(final boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

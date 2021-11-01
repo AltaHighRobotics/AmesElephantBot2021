@@ -4,8 +4,10 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
@@ -14,30 +16,26 @@ public class DriveTrainSub extends SubsystemBase
   /** Creates a new DriveTrainSub. */
   private Victor leftDrive1;
   private Victor leftDrive2;
-  private Talon rightDrive1;
-  private Talon rightDrive2;
+  private Victor rightDrive1;
+  private Victor rightDrive2;
+  private SpeedControllerGroup leftSideDrive;
+  private SpeedControllerGroup rightSideDrive;
+  private DifferentialDrive differentialDrive;
   
   public DriveTrainSub()                               
   {
     leftDrive1  = new Victor(Constants.LEFT_DRIVE_4);
     leftDrive2  = new Victor(Constants.LEFT_DRIVE_5);
-    rightDrive1 = new Talon (Constants.RIGHT_DRIVE_0);
-    rightDrive2 = new Talon (Constants.RIGHT_DRIVE_1);
-
+    rightDrive1 = new Victor (Constants.RIGHT_DRIVE_0);
+    rightDrive2 = new Victor (Constants.RIGHT_DRIVE_1);
+    leftSideDrive = new SpeedControllerGroup(leftDrive1, leftDrive2);
+    rightSideDrive = new SpeedControllerGroup(rightDrive1, rightDrive2);
+    differentialDrive = new DifferentialDrive(leftSideDrive, rightSideDrive);
   }
 
-  public void setRightMotors(double speed)            
-   {
-    rightDrive1.set(speed * Constants.DRIVE_SPEED);
-    rightDrive2.set(speed * Constants.DRIVE_SPEED);
-    System.out.println(speed * Constants.DRIVE_SPEED);
-   }
-
-  public void setLeftMotors(double speed)              
+  public void arcadeDrive( double drivspeed, double turn)
   {
-    leftDrive1.set(speed * Constants.DRIVE_SPEED);
-    leftDrive2.set(speed * Constants.DRIVE_SPEED);
-    System.out.println(speed * Constants.DRIVE_SPEED);
+    differentialDrive.arcadeDrive(-drivspeed, turn);
   }
 
   public void motorGoForward()
