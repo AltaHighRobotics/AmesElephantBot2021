@@ -36,10 +36,10 @@ public final class Constants
 
         public static final double STOP_INTAKE = 0.0;
         public static final double START_INTAKE = 1.0;
-        public static final double START_SHOOTER = 1.0;
+        public static final double START_SHOOTER = -1.0;
         public static final double STOP_SHOOTER = 0.0;
         public static final double STOP_FEED = 0.0;
-        public static final double START_FEED = 1.0;
+        public static final double START_FEED = -0.1;
 
         //Xbox buttons
         public static final int RIGHT_STICK_Y = 5;

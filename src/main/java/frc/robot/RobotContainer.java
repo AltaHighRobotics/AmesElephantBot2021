@@ -55,13 +55,13 @@ public class RobotContainer
   private void configureButtonBindings() 
   {
     //driving controller
-    //final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
-    // final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
-    // final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
+    final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
+    final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
+    final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
 
-    // //shootButton.whenPressed(m_shootCommand);
-    // intakeButton.whenPressed(m_intakeCommand);
-    // feedButton.whenPressed(m_feedCommand);
+    shootButton.toggleWhenPressed(m_shootCommand);
+    intakeButton.toggleWhenPressed(m_intakeCommand);
+    feedButton.toggleWhenPressed(m_feedCommand);
 
   }
 

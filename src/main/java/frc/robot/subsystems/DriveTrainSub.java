@@ -4,7 +4,10 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -14,52 +17,56 @@ import frc.robot.Constants;
 public class DriveTrainSub extends SubsystemBase      
  {
   /** Creates a new DriveTrainSub. */
-  private Victor leftDrive1;
-  private Victor leftDrive2;
-  private Victor rightDrive1;
-  private Victor rightDrive2;
-  private SpeedControllerGroup leftSideDrive;
-  private SpeedControllerGroup rightSideDrive;
-  private DifferentialDrive differentialDrive;
+  private VictorSPX leftDrive1;
+  private VictorSPX leftDrive2;
+  private VictorSPX rightDrive1;
+  private VictorSPX rightDrive2;
   
   public DriveTrainSub()                               
   {
-    leftDrive1  = new Victor(Constants.LEFT_DRIVE_4);
-    leftDrive2  = new Victor(Constants.LEFT_DRIVE_5);
-    rightDrive1 = new Victor (Constants.RIGHT_DRIVE_0);
-    rightDrive2 = new Victor (Constants.RIGHT_DRIVE_1);
-    leftSideDrive = new SpeedControllerGroup(leftDrive1, leftDrive2);
-    rightSideDrive = new SpeedControllerGroup(rightDrive1, rightDrive2);
-    differentialDrive = new DifferentialDrive(leftSideDrive, rightSideDrive);
+    leftDrive1  = new VictorSPX(Constants.LEFT_DRIVE_4);
+    leftDrive2  = new VictorSPX(Constants.LEFT_DRIVE_5);
+    rightDrive1 = new VictorSPX (Constants.RIGHT_DRIVE_0);
+    rightDrive2 = new VictorSPX (Constants.RIGHT_DRIVE_1);
   }
 
-  public void arcadeDrive( double driveSpeed, double turn)
-  {
-    differentialDrive.arcadeDrive(-driveSpeed, turn);
-    // System.out.println(leftSideDrive);
+  public void setRightMotors(double speed){
+    rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+    rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
   }
 
-  public void testMotors(double speed)
-  {
-    leftSideDrive.set(speed);
-    rightSideDrive.set(speed);
-    System.out.println(speed);
+  public void setLeftMotors(double speed){
+    leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+    leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
   }
+
+  // public void arcadeDrive( double driveSpeed, double turn)
+  // {
+  //   differentialDrive.arcadeDrive(-driveSpeed, turn);
+  //   // System.out.println(leftSideDrive);
+  // }
+
+  // public void testMotors(double speed)
+  // {
+  //   leftSideDrive.set(speed);
+  //   rightSideDrive.set(speed);
+  //   System.out.println(speed);
+  // }
 
   public void motorGoForward()
   {
-    leftDrive1.set(-Constants.AUTONOMOUS_SPEED);
-    leftDrive2.set(-Constants.AUTONOMOUS_SPEED);
-    rightDrive1.set(Constants.AUTONOMOUS_SPEED);
-    rightDrive2.set(Constants.AUTONOMOUS_SPEED);
+    leftDrive1.set(ControlMode.PercentOutput, -Constants.AUTONOMOUS_SPEED);
+    leftDrive2.set(ControlMode.PercentOutput, -Constants.AUTONOMOUS_SPEED);
+    rightDrive1.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_SPEED);
+    rightDrive2.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_SPEED);
   }
 
   public void motorStop()
   {
-    leftDrive1.set(Constants.AUTONOMOUS_STOP);
-    leftDrive2.set(Constants.AUTONOMOUS_STOP);
-    rightDrive1.set(Constants.AUTONOMOUS_STOP);
-    rightDrive2.set(Constants.AUTONOMOUS_STOP);
+    leftDrive1.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_STOP);
+    leftDrive2.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_STOP);
+    rightDrive1.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_STOP);
+    rightDrive2.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_STOP);
   }
 
   @Override

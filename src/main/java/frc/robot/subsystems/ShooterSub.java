@@ -4,6 +4,10 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonFX;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Victor;
 import frc.robot.Constants;
@@ -11,13 +15,13 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class ShooterSub extends SubsystemBase 
 {
-  private Victor shooterMotor;
-  private Talon feedMotor;
+  private TalonFX shooterMotor;
+  private TalonSRX feedMotor;
   /** Creates a new ShooterSub. */
   public ShooterSub()
    {
-    shooterMotor = new Victor(Constants.SHOOTER_MOTOR);
-    feedMotor = new Talon(Constants.FEED_MOTOR);
+    shooterMotor = new TalonFX(Constants.SHOOTER_MOTOR);
+    feedMotor = new TalonSRX(Constants.FEED_MOTOR);
    }
 
   @Override
@@ -28,22 +32,22 @@ public class ShooterSub extends SubsystemBase
 
   public void stopShooterMotor()
   {
-    shooterMotor.set(Constants.STOP_SHOOTER);
+    shooterMotor.set(ControlMode.PercentOutput, Constants.STOP_SHOOTER);
   }
 
   public void startShooterMotor()
   {
-    shooterMotor.set(Constants.START_SHOOTER);
+    shooterMotor.set(ControlMode.PercentOutput ,Constants.START_SHOOTER);
   }
 
   public void stopFeedMotor()
   {
-    feedMotor.set(Constants.STOP_FEED);
+    feedMotor.set(ControlMode.PercentOutput, Constants.STOP_FEED);
   }
   
   public void  startFeedMotor()
   {
-    feedMotor.set(Constants.START_FEED);
+    feedMotor.set(ControlMode.PercentOutput, Constants.START_FEED);
   }
 
 

@@ -14,51 +14,49 @@ import frc.robot.subsystems.DriveTrainSub;
 
 public class DriveCommand extends CommandBase {
   //getters
-  private final DriveTrainSub m_driveTrain;
-  private final XboxController drivController;
+  private final DriveTrainSub m_driveTrainSub;
+  private final XboxController m_driveController;
   private double rightStickY;
-  private double rightStickX;
+  private double leftStickY;
 
-  public DriveCommand(DriveTrainSub driveSub, XboxController Xbox) {
+  public DriveCommand(DriveTrainSub subsystem, XboxController driveController) {
     //setters
-    m_driveTrain = driveSub;
-    drivController = Xbox;
+    m_driveTrainSub = subsystem;
+    m_driveController = driveController;
     //subsystem dependencies
-    addRequirements(m_driveTrain);
+    addRequirements(m_driveTrainSub);
 
   }
 
+  // public double GetDriverRawAxisX(final int axis) {
+  //   return driveController.getRawAxis(axis);
+  // }
 
-  public double GetDriverRawAxisX(final int axis) {
-    return drivController.getRawAxis(axis);
-  }
-
-  public double GetDriverRawAxisY(final int axis) {
-    return drivController.getRawAxis(axis);
-  }
+  // public double GetDriverRawAxisY(final int axis) {
+  //   return driveController.getRawAxis(axis);
+  // }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    System.out.println("Drive Train Worky");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (Constants.TELEOP_DRIVE == true)
-    {
+    rightStickY = m_driveController.getRawAxis(Constants.RIGHT_STICK_Y);
+    leftStickY = m_driveController.getRawAxis(Constants.LEFT_STICK_X);
+    m_driveTrainSub.setRightMotors(rightStickY);
+    m_driveTrainSub.setLeftMotors(-leftStickY);
       //rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.RIGHT_STICK_Y);
       //rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X);
-      m_driveTrain.arcadeDrive(rightStickY, rightStickX);
-    }
     
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(final boolean interrupted) {
-    m_driveTrain.testMotors(0);
+   // m_driveTrain.testMotors(0);
   }
 
   // Returns true when the command should end.
