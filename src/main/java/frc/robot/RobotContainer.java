@@ -25,28 +25,21 @@ public class RobotContainer
   //Subsytems
   private final ShooterSub m_shooterSub = new ShooterSub();
   private final IntakeSub m_intakeSub = new IntakeSub();
-  DriveTrainSub m_driveTrainSub = new DriveTrainSub();
+  private final DriveTrainSub m_driveTrainSub = new DriveTrainSub();
   private final BottleGrabberSub m_grabSub = new BottleGrabberSub();
 
   //Commands
   private final FeedCommand m_feedCommand = new FeedCommand(m_shooterSub);
   private final ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
-  DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
+  private final DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
   private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_driveTrainSub);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
   private final BottleGrabberCommand m_grabCommand = new BottleGrabberCommand(m_grabSub);
 
   private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
 
-
-
-
-
-
   public RobotContainer() 
   {
-    DriveTrainSub m_driveTrainSub = new DriveTrainSub();
-    DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
     // Configure the button bindings
     configureButtonBindings();
     CommandScheduler.getInstance().setDefaultCommand(m_driveTrainSub, m_driveCommand);
@@ -62,13 +55,13 @@ public class RobotContainer
   private void configureButtonBindings() 
   {
     //driving controller
-    final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
-    final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
-    final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
+    //final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
+    // final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
+    // final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
 
-    shootButton.whenPressed(m_shootCommand);
-    intakeButton.whenPressed(m_intakeCommand);
-    feedButton.whenPressed(m_feedCommand);
+    // //shootButton.whenPressed(m_shootCommand);
+    // intakeButton.whenPressed(m_intakeCommand);
+    // feedButton.whenPressed(m_feedCommand);
 
   }
 

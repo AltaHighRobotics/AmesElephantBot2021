@@ -22,7 +22,7 @@ public class ShootCommand extends CommandBase {
   @Override
   public void initialize() 
   {
-    
+    System.out.println("Shooter worky");
   }
 
   // Called every time the scheduler runs while the command is scheduled.

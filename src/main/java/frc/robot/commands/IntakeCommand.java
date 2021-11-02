@@ -20,7 +20,7 @@ public class IntakeCommand extends CommandBase {
   @Override
   public void initialize() 
   {
-    
+    System.out.println("Intake worky");
   }
 
   // Called every time the scheduler runs while the command is scheduled.

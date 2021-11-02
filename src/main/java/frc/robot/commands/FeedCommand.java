@@ -20,7 +20,7 @@ public class FeedCommand extends CommandBase {
   @Override
   public void initialize()
    {
-     
+     System.out.println("Feed worky");
    }
 
   // Called every time the scheduler runs while the command is scheduled.

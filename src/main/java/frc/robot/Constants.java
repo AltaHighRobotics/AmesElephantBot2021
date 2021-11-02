@@ -13,18 +13,33 @@ package frc.robot;
  * constants are needed, to reduce verbosity.
  */
 public final class Constants 
-{
-
-        public static final int INTAKE_MOTOR = 1;
-        public static final double STOP_INTAKE = 0;
-        public static final double START_INTAKE = 0; //original is 0
-        public static final int SHOOTER_MOTOR = 6;
-        public static final double START_SHOOTER = 0;// original is 0
-        public static final double STOP_SHOOTER = 0;
-        public static final int FEED_MOTOR = 4;//was 4
-        public static final double STOP_FEED = 0;
-        public static final double START_FEED = 0;//original is 0
+{     
         public static final int DRIVER_CONTROLLER = 0;
+
+        //Motor Assignment
+        public static final int LEFT_DRIVE_4 = 10;
+        public static final int LEFT_DRIVE_5 = 2;
+        public static final int RIGHT_DRIVE_0 = 3;
+        public static final int RIGHT_DRIVE_1 = 5;
+        public static final int GRAB_MOTOR = 0;
+        public static final int INTAKE_MOTOR = 1;
+        public static final int SHOOTER_MOTOR = 6;
+        public static final int FEED_MOTOR = 4;
+        
+        //Speed Values
+        public static final double TELEOP_SPEED = 1.0;
+        public static final double DRIVE_SPEED = 1.0;
+        public static final double AUTONOMOUS_SPEED = 1.0;
+        public static final double AUTONOMOUS_STOP = 0.0;
+		public static final double CLAW_OPEN = 0.0;
+        public static final double CLAW_CLOSE = 0.0;
+
+        public static final double STOP_INTAKE = 0.0;
+        public static final double START_INTAKE = 1.0;
+        public static final double START_SHOOTER = 1.0;
+        public static final double STOP_SHOOTER = 0.0;
+        public static final double STOP_FEED = 0.0;
+        public static final double START_FEED = 1.0;
 
         //Xbox buttons
         public static final int RIGHT_STICK_Y = 5;
@@ -45,19 +60,7 @@ public final class Constants
         public static final int RIGHT_Y_AXIS = 0;
         public static final int LEFT_Y_AXIS = 0;
 
-        public static final int LEFT_DRIVE_4 = 10;
-        public static final int LEFT_DRIVE_5 = 2;
-        public static final int RIGHT_DRIVE_0 = 3;
-        public static final int RIGHT_DRIVE_1 = 5;
-        public static final double DRIVE_SPEED = 1;
 
-        public static final double AUTONOMOUS_SPEED = 1;
-        public static final double AUTONOMOUS_STOP = 0;
-		public static final int GRAB_MOTOR = 0;
-		public static final double CLAW_OPEN = 0;
-        public static final double CLAW_CLOSE = 0;
-        public static final double TELEOP_SPEED = 0.5;
-        
         public static final boolean TELEOP_DRIVE = true;
 
 }
