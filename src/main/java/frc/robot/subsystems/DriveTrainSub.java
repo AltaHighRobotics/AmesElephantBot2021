@@ -33,10 +33,10 @@ public class DriveTrainSub extends SubsystemBase
     differentialDrive = new DifferentialDrive(leftSideDrive, rightSideDrive);
   }
 
-  public void arcadeDrive( double drivspeed, double turn)
+  public void arcadeDrive( double driveSpeed, double turn)
   {
-    differentialDrive.arcadeDrive(-drivspeed, turn);
-    System.out.println(leftSideDrive);
+    differentialDrive.arcadeDrive(-driveSpeed, turn);
+    // System.out.println(leftSideDrive);
   }
 
   public void testMotors(double speed)
