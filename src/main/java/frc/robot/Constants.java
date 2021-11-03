@@ -35,7 +35,7 @@ public final class Constants
         public static final double CLAW_CLOSE = 0.0;
 
         public static final double STOP_INTAKE = 0.0;
-        public static final double START_INTAKE = 1.0;
+        public static final double START_INTAKE = 0.5;
         public static final double START_SHOOTER = -1.0;
         public static final double STOP_SHOOTER = 0.0;
         public static final double STOP_FEED = 0.0;
