@@ -24,12 +24,13 @@ public class RobotContainer
   
   //Subsytems
   private final ShooterSub m_shooterSub = new ShooterSub();
+  private final FeederSub m_feedSub = new FeederSub();
   private final IntakeSub m_intakeSub = new IntakeSub();
   private final DriveTrainSub m_driveTrainSub = new DriveTrainSub();
   private final BottleGrabberSub m_grabSub = new BottleGrabberSub();
 
   //Commands
-  private final FeedCommand m_feedCommand = new FeedCommand(m_shooterSub);
+  private final FeedCommand m_feedCommand = new FeedCommand(m_feedSub);
   private final ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
   private final DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
   private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_driveTrainSub);
@@ -58,10 +59,12 @@ public class RobotContainer
     final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
     final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
     final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
+    final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_X_BUTTON);
 
     shootButton.toggleWhenPressed(m_shootCommand);
     intakeButton.toggleWhenPressed(m_intakeCommand);
     feedButton.toggleWhenPressed(m_feedCommand);
+    grabButton.whenPressed(m_grabCommand);
 
   }
 

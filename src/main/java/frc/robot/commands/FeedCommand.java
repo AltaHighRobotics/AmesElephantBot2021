@@ -5,12 +5,12 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.FeederSub;
 
 public class FeedCommand extends CommandBase {
-  private final ShooterSub m_feedSub;
+  private final FeederSub m_feedSub;
   /** Creates a new FeedCommand. */
-  public FeedCommand(ShooterSub feedSub) {
+  public FeedCommand(FeederSub feedSub) {
     m_feedSub = feedSub;
     addRequirements(m_feedSub);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -20,7 +20,7 @@ public class FeedCommand extends CommandBase {
   @Override
   public void initialize()
    {
-     System.out.println("Feed worky");
+    //System.out.println("Feed worky");
    }
 
   // Called every time the scheduler runs while the command is scheduled.

@@ -3,21 +3,18 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.subsystems;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonFX;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-
-import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import frc.robot.Constants;
 
-public class ShooterSub extends SubsystemBase 
+public class FeederSub extends SubsystemBase 
 {
-  private TalonFX shooterMotor;
+  private TalonSRX feedMotor;
   /** Creates a new ShooterSub. */
-  public ShooterSub()
+  public FeederSub()
    {
-    shooterMotor = new TalonFX(Constants.SHOOTER_MOTOR);
+    feedMotor = new TalonSRX(Constants.FEED_MOTOR);
    }
 
   @Override
@@ -26,13 +23,14 @@ public class ShooterSub extends SubsystemBase
     // This method will be called once per scheduler run
   }
 
-  public void stopShooterMotor()
+  public void stopFeedMotor()
   {
-    shooterMotor.set(ControlMode.PercentOutput, Constants.STOP_SHOOTER);
+    feedMotor.set(ControlMode.PercentOutput, Constants.STOP_FEED);
+  }
+  
+  public void  startFeedMotor()
+  {
+    feedMotor.set(ControlMode.PercentOutput, Constants.START_FEED);
   }
 
-  public void startShooterMotor()
-  {
-    shooterMotor.set(ControlMode.PercentOutput ,Constants.START_SHOOTER);
-  }
 }
