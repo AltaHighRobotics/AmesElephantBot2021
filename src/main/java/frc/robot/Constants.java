@@ -21,7 +21,7 @@ public final class Constants
         public static final int LEFT_DRIVE_5 = 2;
         public static final int RIGHT_DRIVE_0 = 3;
         public static final int RIGHT_DRIVE_1 = 5;
-        public static final int GRAB_MOTOR = 0;
+        public static final int GRAB_SERVO = 0;
         public static final int INTAKE_MOTOR = 1;
         public static final int SHOOTER_MOTOR = 6;
         public static final int FEED_MOTOR = 4;
@@ -31,8 +31,6 @@ public final class Constants
         public static final double DRIVE_SPEED = 1.0;
         public static final double AUTONOMOUS_SPEED = 1.0;
         public static final double AUTONOMOUS_STOP = 0.0;
-		public static final double CLAW_OPEN = 0.0;
-        public static final double CLAW_CLOSE = 0.0;
 
         public static final double STOP_INTAKE = 0.0;
         public static final double START_INTAKE = 0.5;
@@ -40,6 +38,9 @@ public final class Constants
         public static final double STOP_SHOOTER = 0.0;
         public static final double STOP_FEED = 0.0;
         public static final double START_FEED = -0.1;
+
+        public static final double CLAW_OPEN = 0.0;
+        public static final double CLAW_CLOSE = 1.0;
 
         //Xbox buttons
         public static final int RIGHT_STICK_Y = 5;

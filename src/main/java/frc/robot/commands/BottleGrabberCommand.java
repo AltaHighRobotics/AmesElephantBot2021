@@ -26,16 +26,14 @@ public class BottleGrabberCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (is_open) {
       m_grabSub.openClaw();
-    } else {
-      m_grabSub.closeClaw();
-    }
-  }
+   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+      m_grabSub.closeClaw();
+  }
 
   // Returns true when the command should end.
   @Override

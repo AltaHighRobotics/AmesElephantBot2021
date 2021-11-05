@@ -11,18 +11,18 @@ import frc.robot.Constants;
 
 public class BottleGrabberSub extends SubsystemBase {
   /** Creates a new BottleGrabberSub. */
-  private Servo grabMotor;
+  private Servo grabServo;
 
   public BottleGrabberSub() {
-    grabMotor = new Servo(Constants.GRAB_MOTOR);
+    grabServo = new Servo(Constants.GRAB_SERVO);
   }
 
   public void openClaw() {
-    grabMotor.set(Constants.CLAW_OPEN);
+    grabServo.set(Constants.CLAW_OPEN);
   }
 
   public void closeClaw() {
-    grabMotor.set(Constants.CLAW_CLOSE);
+    grabServo.set(Constants.CLAW_CLOSE);
   }
 
   @Override

@@ -7,9 +7,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import edu.wpi.first.wpilibj.SpeedController;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
@@ -30,20 +27,36 @@ public class DriveTrainSub extends SubsystemBase
     rightDrive2 = new VictorSPX (Constants.RIGHT_DRIVE_1);
   }
 
-  public void setRightMotors(double speed){
+  public void setMotorForward(double speed){
     rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
     rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+
+    leftDrive1.set(ControlMode.PercentOutput, - speed*Constants.DRIVE_SPEED);
+    leftDrive2.set(ControlMode.PercentOutput, - speed*Constants.DRIVE_SPEED);
   }
 
-  public void setLeftMotors(double speed){
+  public void setMotorDirec(double speed){ //Pos X axis = left
+    rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+    rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+
     leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
     leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
   }
 
-  // public void arcadeDrive( double driveSpeed, double turn)
-  // {
-  //   differentialDrive.arcadeDrive(-driveSpeed, turn);
-  //   // System.out.println(leftSideDrive);
+  //  public void setRightMotors(double speed){
+  //    rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+  //    rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+  //  }
+
+  //  public void setLeftMotors(double speed){
+  //    leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+  //    leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+  //  }
+
+  //  public void arcadeDrive( double driveSpeed, double turn)
+  //  {
+  //    differentialDrive.arcadeDrive(-driveSpeed, turn);
+  //    // System.out.println(leftSideDrive);
   // }
 
   // public void testMotors(double speed)
