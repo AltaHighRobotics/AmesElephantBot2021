@@ -18,8 +18,7 @@ import frc.robot.commands.*;
  * periodic methods (other than the scheduler calls). Instead, the structure of the robot (including
  * subsystems, commands, and button mappings) should be declared here.
  */
-public class RobotContainer 
-{
+public class RobotContainer {
   private final XboxController driveController = new XboxController(Constants.DRIVER_CONTROLLER);
   
   //Subsytems
@@ -39,8 +38,7 @@ public class RobotContainer
 
   private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
 
-  public RobotContainer() 
-  {
+  public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
     CommandScheduler.getInstance().setDefaultCommand(m_driveTrainSub, m_driveCommand);
@@ -53,8 +51,7 @@ public class RobotContainer
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() 
-  {
+  private void configureButtonBindings() {
     //driving controller
     final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
     final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
@@ -73,8 +70,7 @@ public class RobotContainer
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() 
-  {
+  public Command getAutonomousCommand() {
 
     // An ExampleCommand will run in autonomous
     return m_autonomousCommand;

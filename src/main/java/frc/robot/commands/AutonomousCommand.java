@@ -7,32 +7,27 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrainSub;
 
-public class AutonomousCommand extends CommandBase 
-{
+public class AutonomousCommand extends CommandBase {
   private DriveTrainSub m_driveTrainSub;
   private int c;
 
-  public AutonomousCommand(DriveTrainSub driveTrainSub) 
-  {
+  public AutonomousCommand(DriveTrainSub driveTrainSub) {
     m_driveTrainSub = driveTrainSub;
     addRequirements(m_driveTrainSub);
   }
 
 // Called when the command is initially scheduled.
   @Override
-  public void initialize() 
-  {
+  public void initialize() {
     c = 0;
 
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() 
-  {
+  public void execute() {
    // m_driveTrainSub.motorGoForward();
-   if (c < 1500)
-   {
+   if (c < 1500) {
     m_driveTrainSub.motorGoForward();
    }
    c++;
@@ -40,8 +35,7 @@ public class AutonomousCommand extends CommandBase
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) 
-  {
+  public void end(boolean interrupted) {
     m_driveTrainSub.motorStop();
   }
 

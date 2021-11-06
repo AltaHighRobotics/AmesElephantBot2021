@@ -20,7 +20,7 @@ public class DriveCommand extends CommandBase {
   private double rightStickX;
   private double leftStickY;
   private double leftStickX;
-  private boolean funnyVariable;
+  private boolean currentRunVariable;
 
   public DriveCommand(DriveTrainSub subsystem, XboxController driveController) {
     //setters
@@ -42,28 +42,27 @@ public class DriveCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (funnyVariable){
-      funnyVariable = false;
+    if (currentRunVariable){
+      currentRunVariable = false;
       m_driveTrainSub.setMotorForward(leftStickY);
-    } else{
-      funnyVariable = true;
+    } else {
+      currentRunVariable = true;
       m_driveTrainSub.setMotorDirec(rightStickX);
     }
     rightStickY = m_driveController.getRawAxis(Constants.RIGHT_STICK_Y);
     rightStickX = m_driveController.getRawAxis(Constants.RIGHT_STICK_X);
     leftStickX = m_driveController.getRawAxis(Constants.LEFT_STICK_Y);
-    leftStickY = m_driveController.getRawAxis(Constants.LEFT_STICK_X); //I don't know why, but x on the controller does y??
+    leftStickY = m_driveController.getRawAxis(Constants.LEFT_STICK_X);
 
-    //m_driveTrainSub.setMotorForward(leftStickY);
-    //m_driveTrainSub.setMotorDirec(rightStickX);
       //rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.RIGHT_STICK_Y);
-      //rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X);
-    
+      //rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X); 
+
   }
 
   // Called once the command ends or is interrupted.

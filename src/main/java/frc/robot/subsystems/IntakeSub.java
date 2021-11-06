@@ -9,28 +9,23 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class IntakeSub extends SubsystemBase 
-{
+public class IntakeSub extends SubsystemBase {
   private TalonSRX intakeMotor;
   /** Creates a new IntakeSub. */
-  public IntakeSub() 
-  {
+  public IntakeSub() {
     intakeMotor = new TalonSRX(Constants.INTAKE_MOTOR);
   }
 
   @Override
-  public void periodic() 
-  {
+  public void periodic() {
     // This method will be called once per scheduler run
   }
 
-  public void stopIntakeMotor()
-  {
+  public void stopIntakeMotor() {
     intakeMotor.set(ControlMode.PercentOutput, Constants.STOP_INTAKE);
   }
 
-  public void startIntakeMotor()
-  {
+  public void startIntakeMotor() {
     intakeMotor.set(ControlMode.PercentOutput, Constants.START_INTAKE);
   }
 }

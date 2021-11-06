@@ -10,8 +10,7 @@ import frc.robot.subsystems.ShooterSub;
 public class ShootCommand extends CommandBase {
   private final ShooterSub m_shooterSub;
   /** Creates a new ShootCommand. */
-  public ShootCommand(ShooterSub shooterSub) 
-  {
+  public ShootCommand(ShooterSub shooterSub) {
     m_shooterSub = shooterSub;
     addRequirements(m_shooterSub);
 
@@ -20,22 +19,19 @@ public class ShootCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() 
-  {
+  public void initialize() {
     //System.out.println("Shooter worky");
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() 
-  {
+  public void execute() {
     m_shooterSub.startShooterMotor();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted)
-  {
+  public void end(boolean interrupted) {
     m_shooterSub.stopShooterMotor();
   }
 

@@ -8,28 +8,23 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import frc.robot.Constants;
 
-public class FeederSub extends SubsystemBase 
-{
+public class FeederSub extends SubsystemBase {
   private TalonSRX feedMotor;
   /** Creates a new ShooterSub. */
-  public FeederSub()
-   {
+  public FeederSub() {
     feedMotor = new TalonSRX(Constants.FEED_MOTOR);
    }
 
   @Override
-  public void periodic() 
-  {
+  public void periodic() {
     // This method will be called once per scheduler run
   }
 
-  public void stopFeedMotor()
-  {
+  public void stopFeedMotor() {
     feedMotor.set(ControlMode.PercentOutput, Constants.STOP_FEED);
   }
   
-  public void  startFeedMotor()
-  {
+  public void  startFeedMotor() {
     feedMotor.set(ControlMode.PercentOutput, Constants.START_FEED);
   }
 

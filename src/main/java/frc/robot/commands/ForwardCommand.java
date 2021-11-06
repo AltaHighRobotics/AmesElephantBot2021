@@ -7,8 +7,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrainSub;
 
-public class ForwardCommand extends CommandBase 
-{
+public class ForwardCommand extends CommandBase {
   /** Creates a new ForwardCommand. 
  * @param m_driveTrainSub*/
   public ForwardCommand(DriveTrainSub m_driveTrainSub) {

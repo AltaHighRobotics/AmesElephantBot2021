@@ -9,28 +9,23 @@ import com.ctre.phoenix.motorcontrol.can.TalonFX;
 import frc.robot.Constants;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
-public class ShooterSub extends SubsystemBase 
-{
+public class ShooterSub extends SubsystemBase {
   private TalonFX shooterMotor;
   /** Creates a new ShooterSub. */
-  public ShooterSub()
-   {
+  public ShooterSub() {
     shooterMotor = new TalonFX(Constants.SHOOTER_MOTOR);
    }
 
   @Override
-  public void periodic() 
-  {
+  public void periodic() {
     // This method will be called once per scheduler run
   }
 
-  public void stopShooterMotor()
-  {
+  public void stopShooterMotor() {
     shooterMotor.set(ControlMode.PercentOutput, Constants.STOP_SHOOTER);
   }
 
-  public void startShooterMotor()
-  {
+  public void startShooterMotor() {
     shooterMotor.set(ControlMode.PercentOutput ,Constants.START_SHOOTER);
   }
 }
