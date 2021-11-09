@@ -39,15 +39,15 @@ public class DriveTrainSub extends SubsystemBase {
     leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
   }
 
-  //  public void setRightMotors(double speed){
-  //    rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
-  //    rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
-  //  }
+ public void setRightMotors(double speed){
+   rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+   rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+ }
 
-  //  public void setLeftMotors(double speed){
-  //    leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
-  //    leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
-  //  }
+ public void setLeftMotors(double speed){
+   leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+   leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+ }
 
   //  public void arcadeDrive( double driveSpeed, double turn)
   //  {

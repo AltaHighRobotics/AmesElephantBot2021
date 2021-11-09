@@ -42,11 +42,13 @@ public final class Constants {
         public static final double CLAW_OPEN = 0.0;
         public static final double CLAW_CLOSE = 1.0;
 
+        public static final double TURN_RAD = 2.0; // Do not use 0!
+
         //Xbox buttons
         public static final int RIGHT_STICK_Y = 5;
         public static final int RIGHT_STICK_X = 4;
-        public static final int LEFT_STICK_Y = 2;
-        public static final int LEFT_STICK_X = 1;
+        public static final int LEFT_STICK_Y = 1;
+        public static final int LEFT_STICK_X = 0;
  
         public static final int XBOX_A_BUTTON = 1; 
         public static final int XBOX_B_BUTTON = 2;
@@ -63,5 +65,4 @@ public final class Constants {
 
 
         public static final boolean TELEOP_DRIVE = true;
-
 }
