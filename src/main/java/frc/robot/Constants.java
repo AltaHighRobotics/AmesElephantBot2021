@@ -34,18 +34,18 @@ public final class Constants {
 
         public static final double STOP_INTAKE = 0.0;
         public static final double START_INTAKE = 0.5;
-        public static final double START_SHOOTER = -1.0;
+        public static final double START_SHOOTER = 0.75;
         public static final double STOP_SHOOTER = 0.0;
         public static final double STOP_FEED = 0.0;
-        public static final double START_FEED = -0.1;
+        public static final double START_FEED = 0.75;
 
-        public static final double CLAW_OPEN = 0.0;
-        public static final double CLAW_CLOSE = 1.0;
+        public static final double CLAW_OPEN = 0.1;
+        public static final double CLAW_CLOSE = -0.1;
 
         public static final double TURN_RAD = 2.0; // Do not use 0!
 
         //Xbox buttons
-        public static final int RIGHT_STICK_Y = 5;
+        public static final int RIGHT_STICK_Y = 3; //5 for flight, 3 for cntroller
         public static final int RIGHT_STICK_X = 4;
         public static final int LEFT_STICK_Y = 1;
         public static final int LEFT_STICK_X = 0;

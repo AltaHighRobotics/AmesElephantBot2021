@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
+//import frc.robot.autonomous.*;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -32,11 +34,18 @@ public class RobotContainer {
   private final FeedCommand m_feedCommand = new FeedCommand(m_feedSub);
   private final ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
   private final DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
-  private final AutonomousCommand m_autonomousCommand = new AutonomousCommand(m_driveTrainSub);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
   private final BottleGrabberCommand m_grabCommand = new BottleGrabberCommand(m_grabSub);
 
-  private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
+  // Autonomous commands
+  // private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
+  // private final FeedShootCommand m_feedShootCommand = 
+  // new FeedShootCommand(m_feedSub, m_shooterSub);
+  // private final AutoIntakeCommand m_autoIntakeCommand = new AutoIntakeCommand(m_intakeSub);
+
+  // Autonmous sequential commands.
+  // private final SequentialCommandGroup m_sequential = 
+  // new SequentialCommandGroup(m_forwardCommand, m_autoIntakeCommand, m_feedShootCommand);
 
   public RobotContainer() {
     // Configure the button bindings
@@ -53,15 +62,15 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     //driving controller
-    final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
+    final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
     final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
-    final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
+    final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
     final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_X_BUTTON);
 
     shootButton.toggleWhenPressed(m_shootCommand);
-    intakeButton.toggleWhenPressed(m_intakeCommand);
-    feedButton.toggleWhenPressed(m_feedCommand);
-    grabButton.whenPressed(m_grabCommand);
+    //intakeButton.toggleWhenPressed(m_intakeCommand);
+    feedButton.whileHeld(m_feedCommand);
+    grabButton.toggleWhenPressed(m_grabCommand);
   }
 
   /**
@@ -72,6 +81,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 
     // An ExampleCommand will run in autonomous
-    return m_autonomousCommand;
+    return m_driveCommand;
   }
 }

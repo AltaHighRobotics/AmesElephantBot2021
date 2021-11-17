@@ -9,21 +9,17 @@ import frc.robot.subsystems.BottleGrabberSub;
 
 public class BottleGrabberCommand extends CommandBase {
   /** Creates a new BottleGrabberCommand. */
-  BottleGrabberSub m_grabSub;
-  boolean is_open;
+  private final BottleGrabberSub m_grabSub;
 
   public BottleGrabberCommand(BottleGrabberSub grabSub) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_grabSub = grabSub;
-    is_open = true;
     addRequirements(m_grabSub);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

@@ -14,6 +14,7 @@ public class IntakeSub extends SubsystemBase {
   /** Creates a new IntakeSub. */
   public IntakeSub() {
     intakeMotor = new TalonSRX(Constants.INTAKE_MOTOR);
+    intakeMotor.configFactoryDefault();
   }
 
   @Override

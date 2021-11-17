@@ -21,6 +21,15 @@ public class DriveTrainSub extends SubsystemBase {
     leftDrive2  = new VictorSPX(Constants.LEFT_DRIVE_5);
     rightDrive1 = new VictorSPX (Constants.RIGHT_DRIVE_0);
     rightDrive2 = new VictorSPX (Constants.RIGHT_DRIVE_1);
+
+    leftDrive1.configFactoryDefault();
+    leftDrive2.configFactoryDefault();
+
+    rightDrive1.configFactoryDefault();
+    rightDrive1.setInverted(true);
+
+    rightDrive2.configFactoryDefault();
+    rightDrive2.setInverted(true);
   }
 
   public void setMotorForward(double speed) {
@@ -39,14 +48,14 @@ public class DriveTrainSub extends SubsystemBase {
     leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
   }
 
- public void setRightMotors(double speed){
-   rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
-   rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+ public void setRightMotors(double speed, double multiplier){
+   rightDrive1.set(ControlMode.PercentOutput, speed*multiplier*Constants.DRIVE_SPEED);
+   rightDrive2.set(ControlMode.PercentOutput, speed*multiplier*Constants.DRIVE_SPEED);
  }
 
- public void setLeftMotors(double speed){
-   leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
-   leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+ public void setLeftMotors(double speed, double multiplier){
+   leftDrive1.set(ControlMode.PercentOutput, speed*multiplier*Constants.DRIVE_SPEED);
+   leftDrive2.set(ControlMode.PercentOutput, speed*multiplier*Constants.DRIVE_SPEED);
  }
 
   //  public void arcadeDrive( double driveSpeed, double turn)

@@ -13,6 +13,9 @@ public class FeederSub extends SubsystemBase {
   /** Creates a new ShooterSub. */
   public FeederSub() {
     feedMotor = new TalonSRX(Constants.FEED_MOTOR);
+
+    feedMotor.configFactoryDefault();
+    feedMotor.setInverted(true);
    }
 
   @Override

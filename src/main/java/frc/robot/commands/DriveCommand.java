@@ -7,6 +7,8 @@
 
 package frc.robot.commands;
 
+//import org.graalvm.compiler.core.common.calc.Condition;
+
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
@@ -20,7 +22,7 @@ public class DriveCommand extends CommandBase {
   private double rightStickX;
   private double leftStickY;
   private double leftStickX;
-  private boolean currentRunVariable;
+  //private boolean currentRunVariable;
   private double rightSpeed;
   private double leftSpeed;
 
@@ -30,7 +32,6 @@ public class DriveCommand extends CommandBase {
     m_driveController = driveController;
     //subsystem dependencies
     addRequirements(m_driveTrainSub);
-
   }
 
   // public double GetDriverRawAxisX(final int axis) {
@@ -43,9 +44,8 @@ public class DriveCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    
-  }
+  public void initialize() {}
+
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -66,17 +66,19 @@ public class DriveCommand extends CommandBase {
     leftStickX = m_driveController.getRawAxis(Constants.LEFT_STICK_X);
     leftStickY = m_driveController.getRawAxis(Constants.LEFT_STICK_Y);
 
-    // Swap neg values if the controllers are switch.
-
     rightSpeed = leftStickY - (leftStickX / Constants.TURN_RAD);
     leftSpeed = leftStickY + (leftStickX / Constants.TURN_RAD);
 
-    m_driveTrainSub.setRightMotors(-rightSpeed);
-    m_driveTrainSub.setLeftMotors(leftSpeed);
+    m_driveTrainSub.setRightMotors(rightSpeed, speedMultiplier(rightStickY)); //Second argument should be 1 if not using flight stick
+    m_driveTrainSub.setLeftMotors(leftSpeed, speedMultiplier(rightStickY));
 
       //rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.RIGHT_STICK_Y);
       //rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X);
   }
+
+ private double speedMultiplier(double stick) {
+  return (stick - 1.0) / -2.0 + 0.5;
+ }
 
   // Called once the command ends or is interrupted.
   @Override
