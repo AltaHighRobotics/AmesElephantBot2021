@@ -5,6 +5,7 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.Servo;
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
 import frc.robot.Constants;
 
 
@@ -17,11 +18,11 @@ public class BottleGrabberSub extends SubsystemBase {
   }
 
   public void openClaw() {
-    grabServo.set(Constants.CLAW_OPEN);
+    grabServo.setAngle(Constants.CLAW_OPEN);
   }
 
   public void closeClaw() {
-    grabServo.set(Constants.CLAW_CLOSE);
+    grabServo.setAngle(Constants.CLAW_CLOSE);
   }
 
   @Override

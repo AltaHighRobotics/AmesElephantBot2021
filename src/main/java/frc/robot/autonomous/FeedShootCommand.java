@@ -43,14 +43,14 @@ public class FeedShootCommand extends CommandBase {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_shooterSub.startShooterMotor();
+    m_shooterSub.stopShooterMotor();
     m_feederSub.stopFeedMotor();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (timeCounter >= 600) {
+    if (timeCounter >= 400) {
       return true;
     }
 

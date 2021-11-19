@@ -15,6 +15,7 @@ public class IntakeSub extends SubsystemBase {
   public IntakeSub() {
     intakeMotor = new TalonSRX(Constants.INTAKE_MOTOR);
     intakeMotor.configFactoryDefault();
+    intakeMotor.setInverted(true);
   }
 
   @Override

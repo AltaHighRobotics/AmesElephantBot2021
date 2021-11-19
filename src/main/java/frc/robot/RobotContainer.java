@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.subsystems.*;
 import frc.robot.commands.*;
-//import frc.robot.autonomous.*;
+import frc.robot.autonomous.*;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 
 /**
@@ -38,20 +38,19 @@ public class RobotContainer {
   private final BottleGrabberCommand m_grabCommand = new BottleGrabberCommand(m_grabSub);
 
   // Autonomous commands
-  // private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
-  // private final FeedShootCommand m_feedShootCommand = 
-  // new FeedShootCommand(m_feedSub, m_shooterSub);
-  // private final AutoIntakeCommand m_autoIntakeCommand = new AutoIntakeCommand(m_intakeSub);
+  private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
+  private final FeedShootCommand m_feedShootCommand = 
+  new FeedShootCommand(m_feedSub, m_shooterSub);
+  private final AutoIntakeCommand m_autoIntakeCommand = new AutoIntakeCommand(m_intakeSub);
 
   // Autonmous sequential commands.
-  // private final SequentialCommandGroup m_sequential = 
-  // new SequentialCommandGroup(m_forwardCommand, m_autoIntakeCommand, m_feedShootCommand);
+  private final SequentialCommandGroup m_sequential = 
+  new SequentialCommandGroup(m_forwardCommand, m_autoIntakeCommand, m_feedShootCommand);
 
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
     CommandScheduler.getInstance().setDefaultCommand(m_driveTrainSub, m_driveCommand);
-
   }
 
   /**
@@ -68,7 +67,7 @@ public class RobotContainer {
     final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_X_BUTTON);
 
     shootButton.toggleWhenPressed(m_shootCommand);
-    //intakeButton.toggleWhenPressed(m_intakeCommand);
+    intakeButton.toggleWhenPressed(m_intakeCommand);
     feedButton.whileHeld(m_feedCommand);
     grabButton.toggleWhenPressed(m_grabCommand);
   }
@@ -81,6 +80,6 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
 
     // An ExampleCommand will run in autonomous
-    return m_driveCommand;
+    return m_sequential;
   }
 }

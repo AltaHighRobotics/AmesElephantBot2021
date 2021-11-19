@@ -7,12 +7,12 @@ package frc.robot.autonomous;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.DriveTrainSub;
 
-public class forwardCommand extends CommandBase {
-  /** Creates a new forwardCommand. */
+public class ForwardCommand extends CommandBase {
+  /** Creates a new ForwardCommand. */
   private DriveTrainSub m_driveTrainSub;
   private int timeCounter;
 
-  public forwardCommand(DriveTrainSub driveTrain) {
+  public ForwardCommand(DriveTrainSub driveTrain) {
     m_driveTrainSub = driveTrain;
     addRequirements(m_driveTrainSub);
     // Use addRequirements() here to declare subsystem dependencies.

@@ -22,6 +22,8 @@ public class DriveCommand extends CommandBase {
   private double rightStickX;
   private double leftStickY;
   private double leftStickX;
+  private double stickZ;
+
   //private boolean currentRunVariable;
   private double rightSpeed;
   private double leftSpeed;
@@ -65,9 +67,10 @@ public class DriveCommand extends CommandBase {
     rightStickX = m_driveController.getRawAxis(Constants.RIGHT_STICK_X);
     leftStickX = m_driveController.getRawAxis(Constants.LEFT_STICK_X);
     leftStickY = m_driveController.getRawAxis(Constants.LEFT_STICK_Y);
+    stickZ = m_driveController.getRawAxis(Constants.STICK_Z);
 
-    rightSpeed = leftStickY - (leftStickX / Constants.TURN_RAD);
-    leftSpeed = leftStickY + (leftStickX / Constants.TURN_RAD);
+    rightSpeed = leftStickY - ((leftStickX + stickZ) / Constants.TURN_RAD);
+    leftSpeed = leftStickY + ((leftStickX + stickZ) / Constants.TURN_RAD);
 
     m_driveTrainSub.setRightMotors(rightSpeed, speedMultiplier(rightStickY)); //Second argument should be 1 if not using flight stick
     m_driveTrainSub.setLeftMotors(leftSpeed, speedMultiplier(rightStickY));
