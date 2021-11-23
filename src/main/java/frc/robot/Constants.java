@@ -42,7 +42,7 @@ public final class Constants {
         public static final double CLAW_OPEN = 90.0;
         public static final double CLAW_CLOSE = 0.0;
 
-        public static final double TURN_RAD = 4.0; // Do not use 0!
+        public static final double TURN_RAD = 2.5; // Do not use 0!
 
         //Xbox buttons
         public static final int RIGHT_STICK_Y = 3; //5 for flight, 3 for cntroller
