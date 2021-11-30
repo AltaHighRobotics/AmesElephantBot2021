@@ -39,8 +39,8 @@ public final class Constants {
         public static final double STOP_FEED = 0.0;
         public static final double START_FEED = 0.75;
 
-        public static final double CLAW_OPEN = 90.0;
-        public static final double CLAW_CLOSE = 0.0;
+        public static final double CLAW_OPEN = 180.0;
+        public static final double CLAW_CLOSE = -180.0;
 
         public static final double TURN_RAD = 2.5; // Do not use 0!
 
@@ -63,7 +63,6 @@ public final class Constants {
         public static final int XBOX_RIGHT_STICK_BUTTON = 10;
         public static final int RIGHT_Y_AXIS = 0;
         public static final int LEFT_Y_AXIS = 0;
-
 
         public static final boolean TELEOP_DRIVE = true;
 }

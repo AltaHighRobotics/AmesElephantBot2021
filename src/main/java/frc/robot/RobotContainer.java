@@ -66,10 +66,10 @@ public class RobotContainer {
     final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
     final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
 
-    shootButton.toggleWhenPressed(m_shootCommand);
-    intakeButton.toggleWhenPressed(m_intakeCommand);
-    feedButton.whileHeld(m_feedCommand);
-    grabButton.toggleWhenPressed(m_grabCommand);
+   //shootButton.toggleWhenPressed(m_shootCommand);
+   intakeButton.toggleWhenPressed(m_intakeCommand);
+   //feedButton.whileHeld(m_feedCommand);
+   grabButton.toggleWhenPressed(m_grabCommand);
   }
 
   /**

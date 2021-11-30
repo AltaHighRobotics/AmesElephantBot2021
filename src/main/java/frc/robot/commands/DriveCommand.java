@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSub;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 
 public class DriveCommand extends CommandBase {
   //getters
@@ -27,6 +28,10 @@ public class DriveCommand extends CommandBase {
   //private boolean currentRunVariable;
   private double rightSpeed;
   private double leftSpeed;
+
+  // Toogle direction.
+  private double direction;
+  private boolean do_toggle;
 
   public DriveCommand(DriveTrainSub subsystem, XboxController driveController) {
     //setters
@@ -46,7 +51,10 @@ public class DriveCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    direction = 1.0;
+    do_toggle = true;
+  }
 
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -69,11 +77,19 @@ public class DriveCommand extends CommandBase {
     leftStickY = m_driveController.getRawAxis(Constants.LEFT_STICK_Y);
     stickZ = m_driveController.getRawAxis(Constants.STICK_Z);
 
+    // Toggle direction.
+    if (m_driveController.getBumper(Hand.kRight) && do_toggle) {
+      direction *= -1.0;
+      do_toggle = false;
+    } else if (!m_driveController.getBumper(Hand.kRight)) {
+      do_toggle = true;
+    }
+
     rightSpeed = leftStickY - ((leftStickX + stickZ) / Constants.TURN_RAD);
     leftSpeed = leftStickY + ((leftStickX + stickZ) / Constants.TURN_RAD);
 
-    m_driveTrainSub.setRightMotors(rightSpeed, speedMultiplier(rightStickY)); //Second argument should be 1 if not using flight stick
-    m_driveTrainSub.setLeftMotors(leftSpeed, speedMultiplier(rightStickY));
+    m_driveTrainSub.setRightMotors(rightSpeed * direction, speedMultiplier(rightStickY)); //Second argument should be 1 if not using flight stick
+    m_driveTrainSub.setLeftMotors(leftSpeed * direction, speedMultiplier(rightStickY));
 
       //rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.RIGHT_STICK_Y);
       //rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X);
