@@ -29,6 +29,7 @@ public class RobotContainer {
   private final IntakeSub m_intakeSub = new IntakeSub();
   private final DriveTrainSub m_driveTrainSub = new DriveTrainSub();
   private final BottleGrabberSub m_grabSub = new BottleGrabberSub();
+  private final DrawBridgeSub m_drawBridgeSub = new DrawBridgeSub();
 
   //Commands
   private final FeedCommand m_feedCommand = new FeedCommand(m_feedSub);
@@ -36,6 +37,8 @@ public class RobotContainer {
   private final DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
   private final BottleGrabberCommand m_grabCommand = new BottleGrabberCommand(m_grabSub);
+  private final DrawBridgeDownCommand m_downDrawBridgeCommand = new DrawBridgeDownCommand(m_drawBridgeSub);
+  private final DrawBridgeUpCommand m_upDrawBridgeDownCommand = new DrawBridgeUpCommand(m_drawBridgeSub);
 
   // Autonomous commands
   private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
@@ -65,11 +68,15 @@ public class RobotContainer {
     final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_X_BUTTON);
     final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
     final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
+    final JoystickButton upDrawBridgeButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_7);
+    final JoystickButton downDrawBridgeButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_8);
 
-   //shootButton.toggleWhenPressed(m_shootCommand);
+   shootButton.toggleWhenPressed(m_shootCommand);
    intakeButton.toggleWhenPressed(m_intakeCommand);
-   //feedButton.whileHeld(m_feedCommand);
+   feedButton.whileHeld(m_feedCommand);
    grabButton.toggleWhenPressed(m_grabCommand);
+   upDrawBridgeButton.whileHeld(m_upDrawBridgeDownCommand);
+   downDrawBridgeButton.whileHeld(m_downDrawBridgeCommand);
   }
 
   /**

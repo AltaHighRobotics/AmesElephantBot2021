@@ -24,6 +24,7 @@ public final class Constants {
         public static final int INTAKE_MOTOR = 1;
         public static final int FEED_MOTOR = 4;
         public static final int SHOOTER_MOTOR = 6;
+        public static final int DRAWBRIDGE_MOTOR = 12;
         public static final int GRAB_SERVO = 0;
         
         //Speed Values
@@ -38,6 +39,9 @@ public final class Constants {
         public static final double STOP_SHOOTER = 0.0;
         public static final double STOP_FEED = 0.0;
         public static final double START_FEED = 0.75;
+        public static final double STOP_BRIDGE = 0.0;
+        public static final double UP_BRIDGE = 0.3;
+        public static final double DOWN_BRIDGE = -0.4;
 
         public static final double CLAW_OPEN = 180.0;
         public static final double CLAW_CLOSE = -180.0;
@@ -58,6 +62,9 @@ public final class Constants {
  
         public static final int XBOX_LEFT_BUMPER = 5; 
         public static final int XBOX_RIGHT_BUMPER = 6;
+
+        public static final int FLIGHT_BUTTON_7 = 7;
+        public static final int FLIGHT_BUTTON_8 = 8;
  
         public static final int XBOX_LEFT_STICK_BUTTON = 9;
         public static final int XBOX_RIGHT_STICK_BUTTON = 10;
@@ -65,4 +72,5 @@ public final class Constants {
         public static final int LEFT_Y_AXIS = 0;
 
         public static final boolean TELEOP_DRIVE = true;
+
 }
