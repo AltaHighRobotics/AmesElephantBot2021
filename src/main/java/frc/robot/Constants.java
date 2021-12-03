@@ -44,7 +44,7 @@ public final class Constants {
         public static final double DOWN_BRIDGE = -0.4;
 
         public static final double CLAW_OPEN = 180.0;
-        public static final double CLAW_CLOSE = -180.0;
+        public static final double CLAW_CLOSE = -50.0;
 
         public static final double TURN_RAD = 2.5; // Do not use 0!
 
