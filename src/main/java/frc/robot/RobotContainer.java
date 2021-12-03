@@ -41,7 +41,7 @@ public class RobotContainer {
   private final DrawBridgeUpCommand m_upDrawBridgeDownCommand = new DrawBridgeUpCommand(m_drawBridgeSub);
 
   // Autonomous commands
-  private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
+  //private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
   private final ForwardCommand2 m_forwardCommand2 = new ForwardCommand2(m_driveTrainSub);
   private final TurnRightCommand m_rightCommand = new TurnRightCommand(m_driveTrainSub);
   private final OpenClawCommand m_openClawCommand = new OpenClawCommand(m_grabSub);
@@ -49,7 +49,8 @@ public class RobotContainer {
 
   // Autonmous sequential commands.
   private final SequentialCommandGroup m_sequential = 
-  new SequentialCommandGroup(m_closeClawCommand, m_forwardCommand, m_rightCommand, m_forwardCommand2, m_openClawCommand);
+  new SequentialCommandGroup(m_closeClawCommand,// m_forwardCommand, 
+  m_rightCommand, m_forwardCommand2, m_openClawCommand);
 
   public RobotContainer() {
     // Configure the button bindings
