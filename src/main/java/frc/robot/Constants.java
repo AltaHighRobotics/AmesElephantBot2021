@@ -48,6 +48,8 @@ public final class Constants {
 
         public static final double TURN_RAD = 2.5; // Do not use 0!
 
+        public static final double AUTON_TURN_SPEED = 0.25;
+
         //Xbox buttons
         public static final int RIGHT_STICK_Y = 3; //5 for flight, 3 for cntroller
         public static final int RIGHT_STICK_X = 4;

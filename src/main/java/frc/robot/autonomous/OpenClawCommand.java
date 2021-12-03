@@ -5,45 +5,35 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.IntakeSub;
+import frc.robot.subsystems.BottleGrabberSub;
 
-public class AutoIntakeCommand extends CommandBase {
-  /** Creates a new AutoIntakeCommand. */
-  private IntakeSub m_intakeSub;
-  private int timeCounter;
+public class OpenClawCommand extends CommandBase {
+  /** Creates a new OpenClawCommand. */
+  private BottleGrabberSub m_bottleGrabberSub;
 
-  public AutoIntakeCommand(IntakeSub intakeSub) {
-    m_intakeSub = intakeSub;
-    addRequirements(m_intakeSub);
+  public OpenClawCommand(BottleGrabberSub bottleGrabberSub) {
+    m_bottleGrabberSub = bottleGrabberSub;
+    addRequirements(m_bottleGrabberSub);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    timeCounter = 0;
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_intakeSub.startIntakeMotor();
-    timeCounter++;
+    m_bottleGrabberSub.openClaw();
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    m_intakeSub.stopIntakeMotor();
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (timeCounter >= 100) {
-      return true;
-    }
-
-    return false;
+    return true;
   }
 }

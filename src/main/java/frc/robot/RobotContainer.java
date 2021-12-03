@@ -42,13 +42,14 @@ public class RobotContainer {
 
   // Autonomous commands
   private final ForwardCommand m_forwardCommand = new ForwardCommand(m_driveTrainSub);
-  private final FeedShootCommand m_feedShootCommand = 
-  new FeedShootCommand(m_feedSub, m_shooterSub);
-  private final AutoIntakeCommand m_autoIntakeCommand = new AutoIntakeCommand(m_intakeSub);
+  private final ForwardCommand2 m_forwardCommand2 = new ForwardCommand2(m_driveTrainSub);
+  private final TurnRightCommand m_rightCommand = new TurnRightCommand(m_driveTrainSub);
+  private final OpenClawCommand m_openClawCommand = new OpenClawCommand(m_grabSub);
+  private final CloseClawCommand m_closeClawCommand = new CloseClawCommand(m_grabSub);
 
   // Autonmous sequential commands.
   private final SequentialCommandGroup m_sequential = 
-  new SequentialCommandGroup(m_forwardCommand, m_autoIntakeCommand, m_feedShootCommand);
+  new SequentialCommandGroup(m_closeClawCommand, m_forwardCommand, m_rightCommand, m_forwardCommand2, m_openClawCommand);
 
   public RobotContainer() {
     // Configure the button bindings

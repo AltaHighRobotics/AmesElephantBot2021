@@ -5,52 +5,44 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.FeederSub;
-import frc.robot.subsystems.ShooterSub;
+import frc.robot.subsystems.DriveTrainSub;
+import frc.robot.Constants;
 
-public class FeedShootCommand extends CommandBase {
-  /** Creates a new intakeShoot. */
-  private FeederSub m_feederSub;
-  private ShooterSub m_shooterSub;
-  private int timeCounter;
-  
-  public FeedShootCommand(FeederSub feederSub, ShooterSub shooterSub) {
-    m_feederSub = feederSub;
-    m_shooterSub = shooterSub;
-    
-    addRequirements(m_feederSub, m_shooterSub);
+public class TurnRightCommand extends CommandBase {
+  /** Creates a new TurnRightCommand. */
+  private DriveTrainSub m_driveTrainSub;
+  private int time_count;
+
+  public TurnRightCommand(DriveTrainSub driveTrainSub) {
+    m_driveTrainSub = driveTrainSub;
+    addRequirements(m_driveTrainSub);
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    timeCounter = 0;
+    time_count = 0;
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_shooterSub.startShooterMotor();
-
-    if (timeCounter >= 100) {
-      m_feederSub.startFeedMotor();
-    }
-
-    timeCounter++;
+    m_driveTrainSub.setRightMotors(Constants.AUTON_TURN_SPEED, 1.0);
+    m_driveTrainSub.setLeftMotors(Constants.AUTON_TURN_SPEED, -1.0);
+    time_count++;
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    m_shooterSub.stopShooterMotor();
-    m_feederSub.stopFeedMotor();
+    m_driveTrainSub.motorStop();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (timeCounter >= 400) {
+    if (time_count >= 100) {
       return true;
     }
 
