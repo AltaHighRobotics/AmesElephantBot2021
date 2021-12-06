@@ -87,8 +87,8 @@ public class DriveCommand extends CommandBase {
       do_toggle = true;
     }
 
-    rightSpeed = leftStickY - ((leftStickX + stickZ) / Constants.TURN_RAD);
-    leftSpeed = leftStickY + ((leftStickX + stickZ) / Constants.TURN_RAD);
+    rightSpeed = leftStickY - (((leftStickX + stickZ) / Constants.TURN_RAD) * direction);
+    leftSpeed = leftStickY + (((leftStickX + stickZ) / Constants.TURN_RAD) * direction);
 
     m_driveTrainSub.setRightMotors(rightSpeed * direction, speedMultiplier(rightStickY)); //Second argument should be 1 if not using flight stick
     m_driveTrainSub.setLeftMotors(leftSpeed * direction, speedMultiplier(rightStickY));
