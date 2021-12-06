@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSub;
-import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
 public class DriveCommand extends CommandBase {
   //getters
@@ -32,6 +32,7 @@ public class DriveCommand extends CommandBase {
   // Toogle direction.
   private double direction;
   private boolean do_toggle;
+  private JoystickButton toggleButton;
 
   public DriveCommand(DriveTrainSub subsystem, XboxController driveController) {
     //setters
@@ -52,6 +53,7 @@ public class DriveCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    toggleButton = new JoystickButton(m_driveController, Constants.XBOX_RIGHT_BUMPER);
     direction = 1.0;
     do_toggle = true;
   }
@@ -78,10 +80,10 @@ public class DriveCommand extends CommandBase {
     stickZ = m_driveController.getRawAxis(Constants.STICK_Z);
 
     // Toggle direction.
-    if (m_driveController.getBumper(Hand.kRight) && do_toggle) {
+    if (toggleButton.get() && do_toggle) {
       direction *= -1.0;
       do_toggle = false;
-    } else if (!m_driveController.getBumper(Hand.kRight)) {
+    } else if (!toggleButton.get()) {
       do_toggle = true;
     }
 
