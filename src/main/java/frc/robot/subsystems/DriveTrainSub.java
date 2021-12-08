@@ -72,8 +72,8 @@ public class DriveTrainSub extends SubsystemBase {
   // } 
 
   public void motorGoForward() {
-    leftDrive1.set(ControlMode.PercentOutput, -Constants.AUTONOMOUS_SPEED);
-    leftDrive2.set(ControlMode.PercentOutput, -Constants.AUTONOMOUS_SPEED);
+    leftDrive1.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_SPEED);
+    leftDrive2.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_SPEED);
     rightDrive1.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_SPEED);
     rightDrive2.set(ControlMode.PercentOutput, Constants.AUTONOMOUS_SPEED);
   }
