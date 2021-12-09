@@ -43,14 +43,14 @@ public class RobotContainer {
   // Autonomous commands
   private final ForwardCommand1 m_forwardCommand1 = new ForwardCommand1(m_driveTrainSub);
   private final ForwardCommand2 m_forwardCommand2 = new ForwardCommand2(m_driveTrainSub);
-  private final TurnLeftCommand m_leftCommand = new TurnLeftCommand(m_driveTrainSub);
+  private final TurnRightCommand m_turnRightCommand = new TurnRightCommand(m_driveTrainSub);
+  private final TurnLeftCommand m_turnLeftCommand = new TurnLeftCommand(m_driveTrainSub);
   private final OpenClawCommand m_openClawCommand = new OpenClawCommand(m_grabSub);
   private final CloseClawCommand m_closeClawCommand = new CloseClawCommand(m_grabSub);
 
   // Autonmous sequential commands.
   private final SequentialCommandGroup m_sequential = 
-  new SequentialCommandGroup(m_closeClawCommand, m_forwardCommand1, 
-  m_leftCommand, m_forwardCommand2, m_openClawCommand);
+  new SequentialCommandGroup(m_closeClawCommand, m_forwardCommand1, m_openClawCommand);
 
   public RobotContainer() {
     // Configure the button bindings
@@ -69,7 +69,7 @@ public class RobotContainer {
     final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
     final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_X_BUTTON);
     final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
-    final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_Y_BUTTON);
+    final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_RIGHT_BUMPER);
     final JoystickButton upDrawBridgeButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_7);
     final JoystickButton downDrawBridgeButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_8);
 

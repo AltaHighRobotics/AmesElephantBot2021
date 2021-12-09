@@ -53,7 +53,7 @@ public class DriveCommand extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    toggleButton = new JoystickButton(m_driveController, Constants.XBOX_RIGHT_BUMPER);
+    toggleButton = new JoystickButton(m_driveController, Constants.XBOX_Y_BUTTON);
     direction = 1.0;
     do_toggle = true;
   }

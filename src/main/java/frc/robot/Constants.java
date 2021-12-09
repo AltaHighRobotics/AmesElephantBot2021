@@ -30,7 +30,7 @@ public final class Constants {
         //Speed Values
         public static final double TELEOP_SPEED = 1.0;
         public static final double DRIVE_SPEED = 1.0;
-        public static final double AUTONOMOUS_SPEED = -25.0;
+        public static final double AUTONOMOUS_SPEED = 12.5;
         public static final double AUTONOMOUS_STOP = 0.0;
         
 

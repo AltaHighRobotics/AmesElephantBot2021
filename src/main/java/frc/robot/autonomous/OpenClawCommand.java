@@ -10,6 +10,7 @@ import frc.robot.subsystems.BottleGrabberSub;
 public class OpenClawCommand extends CommandBase {
   /** Creates a new OpenClawCommand. */
   private BottleGrabberSub m_bottleGrabberSub;
+  private int timeCounter;
 
   public OpenClawCommand(BottleGrabberSub bottleGrabberSub) {
     m_bottleGrabberSub = bottleGrabberSub;
@@ -19,12 +20,15 @@ public class OpenClawCommand extends CommandBase {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    timeCounter = 0;
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     m_bottleGrabberSub.openClaw();
+    timeCounter++;
   }
 
   // Called once the command ends or is interrupted.
@@ -34,6 +38,10 @@ public class OpenClawCommand extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    if (timeCounter <= 10) {
+      return false;
+    }
+
     return true;
   }
 }
