@@ -47,7 +47,12 @@ public final class Constants {
         public static final double CLAW_OPEN = 180.0;
         public static final double CLAW_CLOSE = -50.0;
 
-        public static final double TURN_RAD = 2.5; // Do not use 0!
+        // Turning radious.
+        public static final double TURN_RAD = 0.4; // Percent.
+
+        // Gram's request.
+        public static final double LOW_TURN_THRESHHOLD = 0.3;
+        public static final double LOW_TURN_MULTIPLIER = 2.0; // Don't make this value 0!
 
         public static final double AUTON_TURN_SPEED = 0.25;
 

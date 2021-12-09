@@ -40,7 +40,7 @@ public class ForwardCommand1 extends CommandBase {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (timeCounter >= 110) { //value to 135 when???
+    if (timeCounter >= 90) { //value to 135 when???
       return true;
     }
 

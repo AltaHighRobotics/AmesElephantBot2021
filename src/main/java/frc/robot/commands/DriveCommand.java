@@ -25,6 +25,9 @@ public class DriveCommand extends CommandBase {
   private double leftStickX;
   private double stickZ;
 
+  private double multiplier;
+  private double low_turn_multiplier;
+
   //private boolean currentRunVariable;
   private double rightSpeed;
   private double leftSpeed;
@@ -56,6 +59,8 @@ public class DriveCommand extends CommandBase {
     toggleButton = new JoystickButton(m_driveController, Constants.XBOX_Y_BUTTON);
     direction = 1.0;
     do_toggle = true;
+    multiplier = 0.0;
+    low_turn_multiplier = 1.0;
   }
 
 
@@ -87,11 +92,20 @@ public class DriveCommand extends CommandBase {
       do_toggle = true;
     }
 
-    rightSpeed = leftStickY - (((leftStickX + stickZ) / Constants.TURN_RAD) * direction);
-    leftSpeed = leftStickY + (((leftStickX + stickZ) / Constants.TURN_RAD) * direction);
+    multiplier = speedMultiplier(rightStickY);
 
-    m_driveTrainSub.setRightMotors(rightSpeed * direction, speedMultiplier(rightStickY)); //Second argument should be 1 if not using flight stick
-    m_driveTrainSub.setLeftMotors(leftSpeed * direction, speedMultiplier(rightStickY));
+    // Grams's request.
+    if (multiplier <= Constants.LOW_TURN_THRESHHOLD) {
+      low_turn_multiplier = Constants.LOW_TURN_MULTIPLIER;
+    } else {
+      low_turn_multiplier = 1.0;
+    }
+
+    rightSpeed = leftStickY - (((leftStickX + stickZ) * Constants.TURN_RAD * low_turn_multiplier) * direction);
+    leftSpeed = leftStickY + (((leftStickX + stickZ) * Constants.TURN_RAD * low_turn_multiplier) * direction);
+
+    m_driveTrainSub.setRightMotors(rightSpeed * direction, multiplier); //Second argument should be 1 if not using flight stick
+    m_driveTrainSub.setLeftMotors(leftSpeed * direction, multiplier);
 
       //rightStickY = Constants.TELEOP_SPEED * GetDriverRawAxisY(Constants.RIGHT_STICK_Y);
       //rightStickX = Constants.TELEOP_SPEED * GetDriverRawAxisX(Constants.RIGHT_STICK_X);
