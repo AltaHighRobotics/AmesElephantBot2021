@@ -36,6 +36,7 @@ public class RobotContainer {
   private final ShootCommand m_shootCommand = new ShootCommand(m_shooterSub);
   private final DriveCommand m_driveCommand = new DriveCommand(m_driveTrainSub, driveController);
   private final IntakeCommand m_intakeCommand = new IntakeCommand(m_intakeSub);
+  private final IntakeRevCommand m_intakeRevCommand = new IntakeRevCommand(m_intakeSub);
   private final BottleGrabberCommand m_grabCommand = new BottleGrabberCommand(m_grabSub);
   private final DrawBridgeDownCommand m_downDrawBridgeCommand = new DrawBridgeDownCommand(m_drawBridgeSub);
   private final DrawBridgeUpCommand m_upDrawBridgeDownCommand = new DrawBridgeUpCommand(m_drawBridgeSub);
@@ -68,13 +69,16 @@ public class RobotContainer {
     //driving controller
     final JoystickButton shootButton = new JoystickButton(driveController, Constants.XBOX_B_BUTTON);
     final JoystickButton intakeButton = new JoystickButton(driveController, Constants.XBOX_X_BUTTON);
+    final JoystickButton intakeRevButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_10);
     final JoystickButton feedButton = new JoystickButton(driveController, Constants.XBOX_A_BUTTON);
     final JoystickButton grabButton = new JoystickButton(driveController, Constants.XBOX_RIGHT_BUMPER);
     final JoystickButton upDrawBridgeButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_7);
     final JoystickButton downDrawBridgeButton = new JoystickButton(driveController, Constants.FLIGHT_BUTTON_8);
+    
 
    shootButton.toggleWhenPressed(m_shootCommand);
    intakeButton.toggleWhenPressed(m_intakeCommand);
+   intakeRevButton.whileHeld(m_intakeRevCommand);
    feedButton.whileHeld(m_feedCommand);
    grabButton.toggleWhenPressed(m_grabCommand);
    upDrawBridgeButton.whileHeld(m_upDrawBridgeDownCommand);

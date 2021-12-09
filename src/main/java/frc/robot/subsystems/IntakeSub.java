@@ -30,4 +30,8 @@ public class IntakeSub extends SubsystemBase {
   public void startIntakeMotor() {
     intakeMotor.set(ControlMode.PercentOutput, Constants.START_INTAKE);
   }
+
+  public void revIntakeMotor() {
+    intakeMotor.set(ControlMode.PercentOutput, Constants.REV_INTAKE);
+  }
 }

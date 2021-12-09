@@ -36,6 +36,7 @@ public final class Constants {
 
         public static final double STOP_INTAKE = 0.0;
         public static final double START_INTAKE = 0.5;
+        public static final double REV_INTAKE = -0.5;
         public static final double START_SHOOTER = 0.75;
         public static final double STOP_SHOOTER = 0.0;
         public static final double STOP_FEED = 0.0;
@@ -73,6 +74,7 @@ public final class Constants {
 
         public static final int FLIGHT_BUTTON_7 = 7;
         public static final int FLIGHT_BUTTON_8 = 8;
+        public static final int FLIGHT_BUTTON_10 = 10;
  
         public static final int XBOX_LEFT_STICK_BUTTON = 9;
         public static final int XBOX_RIGHT_STICK_BUTTON = 10;
