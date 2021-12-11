@@ -51,7 +51,7 @@ public class RobotContainer {
 
   // Autonmous sequential commands.
   private final SequentialCommandGroup m_sequential = 
-  new SequentialCommandGroup(m_closeClawCommand, m_forwardCommand1, m_openClawCommand);
+  new SequentialCommandGroup(m_closeClawCommand, m_forwardCommand1, m_openClawCommand, m_forwardCommand2);
 
   public RobotContainer() {
     // Configure the button bindings

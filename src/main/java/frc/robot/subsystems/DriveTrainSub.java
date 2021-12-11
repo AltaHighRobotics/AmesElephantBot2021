@@ -40,6 +40,14 @@ public class DriveTrainSub extends SubsystemBase {
     leftDrive2.set(ControlMode.PercentOutput, - speed*Constants.DRIVE_SPEED);
   }
 
+  public void setMotorBack(double speed) {
+    rightDrive1.set(ControlMode.PercentOutput, -speed*Constants.DRIVE_SPEED);
+    rightDrive2.set(ControlMode.PercentOutput, -speed*Constants.DRIVE_SPEED);
+
+    leftDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+    leftDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
+  }
+
   public void setMotorDirec(double speed) { //Pos X axis = left
     rightDrive1.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);
     rightDrive2.set(ControlMode.PercentOutput, speed*Constants.DRIVE_SPEED);

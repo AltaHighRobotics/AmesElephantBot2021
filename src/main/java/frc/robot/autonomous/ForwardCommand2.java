@@ -5,6 +5,7 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrainSub;
 
 public class ForwardCommand2 extends CommandBase {
@@ -27,7 +28,10 @@ public class ForwardCommand2 extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_driveTrainSub.motorGoForward();
+    if (timeCounter >= 10) {
+      m_driveTrainSub.motorGoForward();
+    }
+
     timeCounter++;
   }
 
